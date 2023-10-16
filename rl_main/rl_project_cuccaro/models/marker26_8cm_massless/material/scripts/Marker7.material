@@ -1,0 +1,15 @@
+material Aruco/Marker7
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture Marker7.png
+			}
+		}
+	}
+}
+
+

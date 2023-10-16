@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <!-- Turtlebot initial pose -->
+  <arg name="x_pos" default="-0.10"/> <!-- -3.5 -->
+  <arg name="y_pos" default="-5.61"/> <!-- 2.5 -->
+  <arg name="z_pos" default="0.0"/>
+  <arg name="yaw_pos" default="1.5707"/> <!-- 3.1415 -->
+  
+  <!-- Kuka iiwa initial pose -->
+  <arg name="kuka_x_pos" default="-4.19"/> 
+  <arg name="kuka_y_pos" default="4.45"/> 
+  <arg name="kuka_z_pos" default="0.0"/>
+
+  <!-- TURTLEBOT3 BURGER -->
+  
+  <param name="robot_description" command="$(find xacro)/xacro $(find rl_project_cuccaro)/urdf/turtlebot/turtlebot3_burger.urdf.xacro" />
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model turtlebot3_burger -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -Y $(arg yaw_pos) -param robot_description"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  
+
+  <!-- KUKA IIWA -->
+  
+  <node pkg="tf" type="static_transform_publisher" name="map_to_world_tf" args="$(arg kuka_x_pos) $(arg kuka_y_pos) $(arg kuka_z_pos) 0 0 0 /map /world 50"/>
+
+  <group ns="kuka_iiwa">
+
+    <include file="$(find rl_project_cuccaro)/launch/aruco_kuka_iiwa.launch"/>
+
+    <param name="robot_description" command="$(find xacro)/xacro '$(find rl_project_cuccaro)/urdf/kuka_iiwa/kuka_iiwa_ctrl.xacro'" />
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model iiwa -x $(arg kuka_x_pos) -y $(arg kuka_y_pos) -z $(arg kuka_z_pos) -param robot_description"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    
+    <rosparam file="$(find kuka_iiwa_moveit_config)/config/ros_controllers.yaml" command="load"/>
+    <include file="$(find kuka_iiwa_moveit_config)/launch/move_group.launch"/> -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="kuka_iiwa_state_controller kuka_iiwa_arm_controller" />
+    
+    <node name="move_group_cpp" pkg="rl_project_cuccaro" type="move_group_cpp" output="screen"/> -->
+
+  </group>
+  
+  
+</launch>
