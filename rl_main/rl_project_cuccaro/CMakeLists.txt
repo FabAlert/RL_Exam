@@ -20,6 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
     aruco
     aruco_ros
     cv_bridge
+    key_teleop
     )
 
 ## System dependencies are found with CMake's conventions
@@ -167,6 +168,9 @@ include_directories(${Eigen_INCLUDE_DIRS})
 
 add_executable(move_group_cpp src/move_group.cpp)
 target_link_libraries(move_group_cpp ${catkin_LIBRARIES})
+
+add_executable(key_teleop src/key_teleop.cpp)
+target_link_libraries(key_teleop ${catkin_LIBRARIES})
 
 #add_executable(kuka_invkin_ctrl src/kuka_invkin_ctrl.cpp)
 #target_link_libraries(kuka_invkin_ctrl ${catkin_LIBRARIES})
