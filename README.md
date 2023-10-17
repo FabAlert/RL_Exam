@@ -1,4 +1,4 @@
-# _Multi-robot system with Turtlebot3_Burger and Kuka_Iiwa_
+# _Multi-robot system with Turtlebot and Kuka_Iiwa_
 
 Simulation in an industrial environment in which Turtlebot must search for a tool represented by an aruco marker, and then bring it to the Kuka Iiwa. The second robot simulates the picking of the object and places it on another marker on the ground.
 
