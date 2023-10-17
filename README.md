@@ -59,7 +59,7 @@ If you want to visualize the images on the camera sensors you can use the tool f
 ```sh
 $ rqt_image_view
 ```
-If you want to manually controll the turtlebot movement:
+If you want to manually control the turtlebot movement:
 ```sh
 $ rosrun rl_project_cuccaro key_teleop
 ```
