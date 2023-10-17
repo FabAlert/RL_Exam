@@ -67,7 +67,7 @@ $ rosrun rl_project_cuccaro key_teleop
 ## Output on image_view
 
 - /aruco_marker_publisher/result: the topic on which the images from the turtlebot camera are streamed;
-- /simple_single/result: the topic on which the images from the kuka iiwa camera are streamed.
+- /kuka_iiwa/aruco_marker_publisher_kuka_iiwa/result: the topic on which the images from the kuka iiwa camera are streamed.
 
 ## Outline
 
