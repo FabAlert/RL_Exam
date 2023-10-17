@@ -27,6 +27,7 @@ $ git clone https://github.com/FabAlert/RL_Exam.git
 $ cd ..
 $ catkin_make catkin_make -DCATKIN_WHITELIST_PACKAGES="aruco"
 $ catkin_make catkin_make -DCATKIN_WHITELIST_PACKAGES="aruco_msgs"
+$ catkin_make catkin_make -DCATKIN_WHITELIST_PACKAGES="aruco_ros"
 $ catkin_make catkin_make -DCATKIN_WHITELIST_PACKAGES="rl_project_cuccaro"
 
 ```
