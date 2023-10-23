@@ -35,12 +35,6 @@ $ catkin_make catkin_make -DCATKIN_WHITELIST_PACKAGES="rl_project_cuccaro"
 
 On different terminals launch the following commands:
 
-- Start the roscore:
-
-```sh
-$ roscore
-```
-
 - Launch the main node:
 
 ```sh
